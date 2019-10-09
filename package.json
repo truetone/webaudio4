@@ -1,0 +1,15 @@
+{
+  "name": "webaudio4",
+  "version": "0.0.1",
+  "description": "Fourth web audio experiment",
+  "main": "./js/index.js",
+  "scripts": {
+    "test": "jest test"
+  },
+  "author": "Tony Thomas",
+  "license": "ISC",
+  "dependencies": {
+    "parcel": "^1.12.4",
+    "tone": "^13.8.25"
+  }
+}
