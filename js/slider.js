@@ -8,6 +8,10 @@ class Slider {
     this.slider = sliderElem;
   }
 
+  init() {
+    this.renderValue(this.valueElem);
+  }
+
   onChange(event) {
     this.renderValue(this.valueElem);
   }
