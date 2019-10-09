@@ -6,19 +6,40 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" >
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css" type="text/css" >
   <link href="https://fonts.googleapis.com/css?family=News+Cycle|Roboto&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css" type="text/css" >
-<style>
+  <link rel="stylesheet" href="./css/styles.css" type="text/css" >
 </head>
 <body>
   <div class="row">
     <div class="col-xs-12">
       <h1>Tone.js Experiments 4</h1>
+      <div class="row">
+        <div class="col-xs-3">
+          <label for="oscillator-volume-slider">Volume</label>
+          <input id="oscillator-volume-slider" class="input-range volume" orient="vertical" type="range" step="0.1" value="5" min="0" max="10">
+          <p class="range-value" data-slider="oscillator-attack-slider"></p>
+        </div>
+        <div class="col-xs-3">
+          <label for="oscillator-attack-slider">Attack</label>
+          <input id="oscillator-attack-slider" class="input-range attack" orient="vertical" type="range" step="0.1" value="5" min="0" max="10">
+          <p class="range-value" data-slider="oscillator-attack-slider"></p>
+        </div>
+        <div class="col-xs-3">
+          <label for="oscillator-decay-slider">Decay</label>
+          <input id="oscillator-decay-slider" class="input-range decay" orient="vertical" type="range" step="0.1" value="5" min="0" max="10">
+          <p class="range-value" data-slider="oscillator-attack-slider"></p>
+        </div>
+        <div class="col-xs-3">
+          <label for="oscillator-sustain-slider">Sustain</label>
+          <input id="oscillator-sustain-slider" class="input-range sustain" orient="vertical" type="range" step="0.1" value="5" min="0" max="10">
+          <p class="range-value" data-slider="oscillator-attack-slider"></p>
+        </div>
+      </div>
       <p>
         <button id="start-button">Start</button>
         <button id="stop-button">Stop</button>
       </p>
     </div>
   </div>
-  <script src="js/index.js"></script>
+  <script src="./js/index.js"></script>
 </body>
 </html>
