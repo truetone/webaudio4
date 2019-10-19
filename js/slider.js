@@ -1,27 +1,40 @@
 class Slider {
   constructor(sliderElem) {
-    sliderElem.addEventListener("input",
-      (event) => {
-        this.onChange(event);
-      });
-
     this.slider = sliderElem;
+    this.changeEvent = new Event("sliderChange");
   }
 
   init() {
     this.renderValue(this.valueElem);
+    this.bind();
   }
 
-  onChange(event) {
+  bind() {
+    this.slider.addEventListener("input",
+      (event) => {
+        this.onInput(event);
+      });
+  }
+
+  onInput(event) {
     this.renderValue(this.valueElem);
+    this.slider.dispatchEvent(this.changeEvent);
   }
 
   renderValue(targetElem) {
-    targetElem.innerHTML = this.slider.value;
+    targetElem.innerHTML = this.value;
   }
 
   get valueElem() {
     return document.getElementById(this.slider.dataset.valueElem);
+  }
+
+  get value() {
+    return this.slider.value;
+  }
+
+  get name() {
+    return this.id;
   }
 }
 
