@@ -27,7 +27,7 @@ class App {
   }
 
   onVolumeChange(event) {
-    console.log(event);
+    this.toneSequence.synth.volume.value = this.volumeValue;
   }
 
   get startButtonElem() {

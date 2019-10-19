@@ -14,10 +14,17 @@ class Slider {
       (event) => {
         this.onInput(event);
       });
+    this.slider.addEventListener("change",
+      (event) => {
+        this.onChange(event);
+      });
   }
 
   onInput(event) {
     this.renderValue(this.valueElem);
+  }
+
+  onChange(event) {
     this.slider.dispatchEvent(this.changeEvent);
   }
 
