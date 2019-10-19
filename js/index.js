@@ -1,4 +1,5 @@
 const Slider = require('./slider');
+const ToneSequence = require('./tone_sequence');
 
 class App {
   constructor() {
@@ -9,10 +10,32 @@ class App {
     this.volumeElem.addEventListener("sliderChange", (event) => {
       this.onVolumeChange(event);
     });
+    this.startButtonElem.addEventListener("click", (event) => {
+      console.log("start");
+      this.toneSequence.start();
+    });
+    this.stopButtonElem.addEventListener("click", (event) => {
+      console.log("stop");
+      this.toneSequence.stop();
+    });
+    this.toneSequence = new ToneSequence(
+      this.volumeValue,
+      this.attackValue,
+      this.decayValue,
+      this.sustainValue
+    );
   }
 
   onVolumeChange(event) {
     console.log(event);
+  }
+
+  get startButtonElem() {
+    return document.querySelector("#start-button");
+  }
+
+  get stopButtonElem() {
+    return document.querySelector("#stop-button");
   }
 
   get volumeSlider() {

@@ -37,7 +37,19 @@ class ToneSequence {
       "D4",
       "A3"
     ];
-    const synth = new Synth(config.synth);
+
+    const synthSineConfigOne = {
+      oscillator: {
+        type: "sine"
+      },
+      envelope: {
+        attack: 2.0,
+        decay: 0.1,
+        sustain: 0.3,
+        release: 1
+      }
+    };
+    const synth = new Synth(synthSineConfigOne);
     const reverb = new Reverb(reverbConfig);
     const panner = new Panner(panConfig).chain(reverb, Master);
 
@@ -48,6 +60,8 @@ class ToneSequence {
     this.sequence = new Sequence((time, note) => {
       synth.triggerAttackRelease(note, noteInterval, time);
     }, noteSequence, noteInterval);
+
+    console.log(this.sequence);
   }
 
   getLevel() {
