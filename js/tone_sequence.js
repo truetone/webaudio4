@@ -50,7 +50,7 @@ class ToneSequence {
       },
       envelope: {
         attack: attack,
-        decay: 0.1,
+        decay: decay,
         sustain: 0.3,
         release: 1
       }

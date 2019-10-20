@@ -12,6 +12,9 @@ class App {
       this.onAttackChange(event);
     });
     this.decaySlider.init();
+    this.decayElem.addEventListener("sliderChange", (event) => {
+      this.onDecayChange(event);
+    });
     this.sustainSlider.init();
     this.startButtonElem.addEventListener("click", (event) => {
       console.log("start");
@@ -34,7 +37,15 @@ class App {
   }
 
   onAttackChange(event) {
-    this.envelope.attack = this.attackValue;
+    this.attack = this.attackValue;
+  }
+
+  onDecayChange(event) {
+    this.decay = this.decayValue;
+  }
+
+  get decay() {
+    return this.envelop.decay;
   }
 
   get attack() {
