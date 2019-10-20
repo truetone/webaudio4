@@ -51,18 +51,6 @@ class App {
     this.envelope.sustain = this.sustainValue;
   }
 
-  get sustain() {
-    return this.envelop.sustain;
-  }
-
-  get decay() {
-    return this.envelop.decay;
-  }
-
-  get attack() {
-    return this.envelop.attack;
-  }
-
   get envelope() {
     return this.synth.envelope;
   }
