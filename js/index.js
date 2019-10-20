@@ -16,6 +16,9 @@ class App {
       this.onDecayChange(event);
     });
     this.sustainSlider.init();
+    this.sustainElem.addEventListener("sliderChange", (event) => {
+      this.onSustainChange(event);
+    });
     this.startButtonElem.addEventListener("click", (event) => {
       console.log("start");
       this.toneSequence.start();
@@ -37,11 +40,19 @@ class App {
   }
 
   onAttackChange(event) {
-    this.attack = this.attackValue;
+    this.envelope.attack = this.attackValue;
   }
 
   onDecayChange(event) {
-    this.decay = this.decayValue;
+    this.envelope.decay = this.decayValue;
+  }
+
+  onSustainChange(event) {
+    this.envelope.sustain = this.sustainValue;
+  }
+
+  get sustain() {
+    return this.envelop.sustain;
   }
 
   get decay() {

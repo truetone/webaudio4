@@ -30,14 +30,6 @@ class ToneSequence {
 
     // TODO: make an interface for this
     const noteSequence = [
-      "E2",
-      "E2",
-      "E2",
-      "E2",
-      "E2",
-      "E2",
-      "E2",
-      "E2",
       "E4",
       "F#4",
       "D4",
