@@ -49,13 +49,14 @@ class ToneSequence {
         type: "sine"
       },
       envelope: {
-        attack: 2.0,
+        attack: attack,
         decay: 0.1,
         sustain: 0.3,
         release: 1
       }
     };
     this.synth = new Synth(synthSineConfigOne).toMaster();
+    console.log(this.synth.envelope);
     // const reverb = new Reverb(reverbConfig);
     // const panner = new Panner(panConfig).chain(reverb, Master);
 

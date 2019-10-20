@@ -4,12 +4,15 @@ const ToneSequence = require('./tone_sequence');
 class App {
   constructor() {
     this.volumeSlider.init();
-    this.attackSlider.init();
-    this.decaySlider.init();
-    this.sustainSlider.init();
     this.volumeElem.addEventListener("sliderChange", (event) => {
       this.onVolumeChange(event);
     });
+    this.attackSlider.init();
+    this.attackElem.addEventListener("sliderChange", (event) => {
+      this.onAttackChange(event);
+    });
+    this.decaySlider.init();
+    this.sustainSlider.init();
     this.startButtonElem.addEventListener("click", (event) => {
       console.log("start");
       this.toneSequence.start();
@@ -27,7 +30,23 @@ class App {
   }
 
   onVolumeChange(event) {
-    this.toneSequence.synth.volume.value = this.volumeValue;
+    this.synth.volume.value = this.volumeValue;
+  }
+
+  onAttackChange(event) {
+    this.envelope.attack = this.attackValue;
+  }
+
+  get attack() {
+    return this.envelop.attack;
+  }
+
+  get envelope() {
+    return this.synth.envelope;
+  }
+
+  get synth() {
+    return this.toneSequence.synth;
   }
 
   get startButtonElem() {
