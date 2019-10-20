@@ -8,12 +8,6 @@ const Transport = require("Tone").Transport;
 
 class ToneSequence {
   constructor(volume, attack, decay, sustain) {
-    console.group("ToneSequence");
-      console.log(volume)
-      console.log(attack)
-      console.log(decay)
-      console.log(sustain)
-    console.groupEnd();
     this.meter = new Meter();
     // TODO: make an interface for this
     const reverbConfig = {
@@ -48,12 +42,11 @@ class ToneSequence {
       }
     };
     this.synth = new Synth(synthSineConfigOne).toMaster();
-    console.log(this.synth.envelope);
-    // const reverb = new Reverb(reverbConfig);
-    // const panner = new Panner(panConfig).chain(reverb, Master);
+    const reverb = new Reverb(reverbConfig);
+    const panner = new Panner(panConfig).chain(reverb, Master);
 
-    // this.synth.connect(panner);
-    // this.synth.connect(this.meter);
+    this.synth.connect(panner);
+    this.synth.connect(this.meter);
     this.synth.volume.value = volume;
 
     this.sequence = new Sequence((time, note) => {
