@@ -13,7 +13,7 @@
     <div class="col-xs-12">
       <h1>Tone.js Experiments 4</h1>
       <div class="row">
-        <div class="col-xs-3">
+        <div class="col-xs-2">
           <label for="oscillator-volume-slider">Volume</label>
           <input id="oscillator-volume-slider"
                  class="input-range volume"
@@ -27,7 +27,7 @@
                  data-control="volume">
           <p class="range-value" id="oscillator-volume-slider-value" data-slider="oscillator-volume-slider"></p>
         </div>
-        <div class="col-xs-3">
+        <div class="col-xs-2">
           <label for="oscillator-attack-slider">Attack</label>
           <input id="oscillator-attack-slider"
                  class="input-range attack"
@@ -41,7 +41,7 @@
                  data-control="attack">
           <p class="range-value" id="oscillator-attack-slider-value" data-slider="oscillator-attack-slider"></p>
         </div>
-        <div class="col-xs-3">
+        <div class="col-xs-2">
           <label for="oscillator-decay-slider">Decay</label>
           <input id="oscillator-decay-slider"
                  class="input-range decay"
@@ -55,7 +55,7 @@
                  data-control="decay">
           <p class="range-value" id="oscillator-decay-slider-value" data-slider="oscillator-attack-slider"></p>
         </div>
-        <div class="col-xs-3">
+        <div class="col-xs-2">
           <label for="oscillator-sustain-slider">Sustain</label>
           <input id="oscillator-sustain-slider"
                  class="input-range sustain"
@@ -68,6 +68,31 @@
                  data-value-elem="oscillator-sustain-slider-value"
                  data-control="sustain">
           <p class="range-value" id="oscillator-sustain-slider-value" data-slider="oscillator-attack-slider"></p>
+        </div>
+        <div class="col-xs-2">
+          <h2>Note Interval</h2>
+          <ul>
+            <li>
+              <label for="oscillator-note-interval-1n">1n</label>
+              <input id="oscillator-note-interval-1n" type="radio" name="note-interval" value="1n">
+            </li>
+            <li>
+              <label for="oscillator-note-interval-2n">2n</label>
+              <input id="oscillator-note-interval-2n" type="radio" name="note-interval" value="2n">
+            </li>
+            <li>
+              <label for="oscillator-note-interval-4n">4n</label>
+              <input id="oscillator-note-interval-4n" type="radio" name="note-interval" value="4n">
+            </li>
+            <li>
+              <label for="oscillator-note-interval-8n">8n</label>
+              <input id="oscillator-note-interval-8n" type="radio" name="note-interval" value="8n">
+            </li>
+            <li>
+              <label for="oscillator-note-interval-16n">16n</label>
+              <input id="oscillator-note-interval-16n" type="radio" name="note-interval" value="16n">
+            </li>
+          </ul>
         </div>
       </div>
       <p>

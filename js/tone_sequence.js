@@ -9,6 +9,8 @@ const Transport = require("Tone").Transport;
 class ToneSequence {
   constructor(volume, attack, decay, sustain) {
     this.meter = new Meter();
+    this.noteInterval = "1n";
+
     // TODO: make an interface for this
     const reverbConfig = {
       "decay": 2,
@@ -18,9 +20,6 @@ class ToneSequence {
 
     // TODO: make an interface for this
     const panConfig = 0.5;
-
-    // TODO: make an interface for this
-    const noteInterval = "1n";
 
     // TODO: make an interface for this
     const noteSequence = [
@@ -50,8 +49,8 @@ class ToneSequence {
     this.synth.volume.value = volume;
 
     this.sequence = new Sequence((time, note) => {
-      this.synth.triggerAttackRelease(note, noteInterval, time);
-    }, noteSequence, noteInterval);
+      this.synth.triggerAttackRelease(note, this.noteInterval, time);
+    }, noteSequence, this.noteInterval);
   }
 
   getLevel() {

@@ -19,6 +19,11 @@ class App {
     this.sustainElem.addEventListener("sliderChange", (event) => {
       this.onSustainChange(event);
     });
+    this.noteIntervalElems.forEach((elem) => {
+      elem.addEventListener("change", (event) => {
+        this.onNoteItervalChange(event);
+      });
+    });
     this.startButtonElem.addEventListener("click", (event) => {
       console.log("start");
       this.toneSequence.start();
@@ -33,6 +38,10 @@ class App {
       this.decayValue,
       this.sustainValue
     );
+  }
+
+  onNoteItervalChange(event) {
+    this.toneSequence.noteInterval = this.noteIntervalValue;
   }
 
   onVolumeChange(event) {
@@ -113,6 +122,18 @@ class App {
 
   get sustainElem() {
     return document.querySelector(".input-range.sustain");
+  }
+
+  get noteIntervalElems() {
+    return document.querySelectorAll("input[name=note-interval]");
+  }
+
+  get checkedNoteIntervalElem() {
+    return document.querySelectorAll("input[name=note-interval]:checked")[0];
+  }
+
+  get noteIntervalValue() {
+    return this.checkedNoteIntervalElem.value;
   }
 }
 
