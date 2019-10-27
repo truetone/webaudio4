@@ -1,8 +1,10 @@
 const Slider = require('./slider');
 const ToneSequence = require('./tone_sequence');
+const logger = require('./logger');
 
 class App {
   constructor() {
+    this.logger = new logger(App.name);
     this.volumeSlider.init();
     this.volumeElem.addEventListener("sliderChange", (event) => {
       this.onVolumeChange(event);
@@ -25,11 +27,11 @@ class App {
       });
     });
     this.startButtonElem.addEventListener("click", (event) => {
-      console.log("start");
+      this.log("start");
       this.toneSequence.start();
     });
     this.stopButtonElem.addEventListener("click", (event) => {
-      console.log("stop");
+      this.log("stop");
       this.toneSequence.stop();
     });
     this.toneSequence = new ToneSequence(
@@ -40,24 +42,38 @@ class App {
     );
   }
 
-  onNoteItervalChange(event) {
+  onPanChange(event) {
+    this.log(`Setting pan to ${this.panValue}.`);
+    this.toneSequence.panValue = this.panValue;
+  }
+
+  onNoteIntervalChange(event) {
+    this.log(`Setting note interval to ${this.noteIntervalValue}.`);
     this.toneSequence.noteInterval = this.noteIntervalValue;
   }
 
   onVolumeChange(event) {
+    this.log(`Setting volume to ${this.volumeValue}.`);
     this.synth.volume.value = this.volumeValue;
   }
 
   onAttackChange(event) {
+    this.log(`Setting attack to ${this.attackValue}.`);
     this.envelope.attack = this.attackValue;
   }
 
   onDecayChange(event) {
+    this.log(`Setting decay to ${this.decayValue}.`);
     this.envelope.decay = this.decayValue;
   }
 
   onSustainChange(event) {
+    this.log(`Setting sustain to ${this.decayValue}.`);
     this.envelope.sustain = this.sustainValue;
+  }
+
+  log(msg) {
+    this.logger.log(msg);
   }
 
   get envelope() {

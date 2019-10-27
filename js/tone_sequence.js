@@ -5,9 +5,12 @@ const Sequence = require("Tone").Sequence;
 const Synth = require("Tone").Synth;
 const Reverb = require("Tone").Freeverb;
 const Transport = require("Tone").Transport;
+const logger = require('./logger');
 
 class ToneSequence {
   constructor(volume, attack, decay, sustain) {
+    this.logger = new logger(ToneSequence.name);
+    this.log(`ToneSequence with volume: ${volume}, attack: ${attack}, decay: ${decay}, sustain: ${sustain}.`)
     this.meter = new Meter();
     this.noteInterval = "1n";
 
@@ -58,20 +61,20 @@ class ToneSequence {
   }
 
   start(when=0) {
-    console.group("ToneSequence");
-      console.log("starting")
-      console.log(this.sequence)
-    console.groupEnd();
+    this.log("starting")
+    this.log(this.sequence)
     Transport.start();
     this.sequence.start(when);
   }
 
   stop() {
-    console.group("ToneSequence");
-      console.log("stopping")
-    console.groupEnd();
+    this.log("stopping")
     Transport.stop();
     this.sequence.stop();
+  }
+
+  log(msg) {
+    this.logger.log(msg);
   }
 }
 
