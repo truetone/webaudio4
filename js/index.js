@@ -21,9 +21,13 @@ class App {
     this.sustainElem.addEventListener("sliderChange", (event) => {
       this.onSustainChange(event);
     });
+    this.panSlider.init();
+    this.panElem.addEventListener("sliderChange", (event) => {
+      this.onPanChange(event);
+    });
     this.noteIntervalElems.forEach((elem) => {
       elem.addEventListener("change", (event) => {
-        this.onNoteItervalChange(event);
+        this.onNoteIntervalChange(event);
       });
     });
     this.startButtonElem.addEventListener("click", (event) => {
@@ -150,6 +154,18 @@ class App {
 
   get noteIntervalValue() {
     return this.checkedNoteIntervalElem.value;
+  }
+
+  get panSlider() {
+   return new Slider(this.panElem);
+  }
+
+  get panValue() {
+    return this.panSlider.value;
+  }
+
+  get panElem() {
+    return document.querySelector(".input-range.pan");
   }
 }
 

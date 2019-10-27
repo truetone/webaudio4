@@ -13,6 +13,7 @@ class ToneSequence {
     this.log(`ToneSequence with volume: ${volume}, attack: ${attack}, decay: ${decay}, sustain: ${sustain}.`)
     this.meter = new Meter();
     this.noteInterval = "1n";
+    this.panValue = 0.5;
 
     // TODO: make an interface for this
     const reverbConfig = {
@@ -20,9 +21,6 @@ class ToneSequence {
       "roomSize": 0.8,
       "wet": 0.8
     };
-
-    // TODO: make an interface for this
-    const panConfig = 0.5;
 
     // TODO: make an interface for this
     const noteSequence = [
@@ -45,7 +43,7 @@ class ToneSequence {
     };
     this.synth = new Synth(synthSineConfigOne).toMaster();
     const reverb = new Reverb(reverbConfig);
-    const panner = new Panner(panConfig).chain(reverb, Master);
+    const panner = new Panner(this.panValue).chain(reverb, Master);
 
     this.synth.connect(panner);
     this.synth.connect(this.meter);
