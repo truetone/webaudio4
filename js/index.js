@@ -34,6 +34,7 @@ class App {
     });
     this.startButtonElem.addEventListener("click", (event) => {
       this.log("start");
+      this.log(this.checkedNotes);
       this.toneSequence.start();
     });
     this.stopButtonElem.addEventListener("click", (event) => {
@@ -52,7 +53,7 @@ class App {
 
   renderNotes() {
     this.notes.forEach((note) => {
-      this.notesContainer.innerHTML += `<li><input type="checkbox" id="note-${note}" name="note-${note}">
+      this.notesContainer.innerHTML += `<li><input type="checkbox" id="note-${note}" name="note-${note}" value="${note}">
                                         <label for="note-${note}">${note}</label></li>`;
     });
   }
@@ -89,6 +90,14 @@ class App {
 
   log(msg) {
     this.logger.log(msg);
+  }
+
+  get checkedNotes() {
+    return [...this.checkedNoteElems].map(elem => elem.value);
+  }
+
+  get checkedNoteElems() {
+    return document.querySelectorAll("input[type='checkbox']:checked");
   }
 
   get envelope() {
