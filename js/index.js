@@ -1,10 +1,12 @@
 const Slider = require('./slider');
 const ToneSequence = require('./tone_sequence');
 const logger = require('./logger');
+const notes = require('./notes');
 
 class App {
   constructor() {
     this.logger = new logger(App.name);
+    this.notes = notes;
     this.volumeSlider.init();
     this.volumeElem.addEventListener("sliderChange", (event) => {
       this.onVolumeChange(event);
@@ -44,6 +46,15 @@ class App {
       this.decayValue,
       this.sustainValue
     );
+
+    this.renderNotes();
+  }
+
+  renderNotes() {
+    this.notes.forEach((note) => {
+      this.notesContainer.innerHTML += `<li><input type="checkbox" id="note-${note}" name="note-${note}">
+                                        <label for="note-${note}">${note}</label></li>`;
+    });
   }
 
   onPanChange(event) {
@@ -86,6 +97,10 @@ class App {
 
   get synth() {
     return this.toneSequence.synth;
+  }
+
+  get notesContainer() {
+    return document.querySelector("#notes-container");
   }
 
   get startButtonElem() {
