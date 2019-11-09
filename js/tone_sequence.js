@@ -22,14 +22,6 @@ class ToneSequence {
       "wet": 0.8
     };
 
-    // TODO: make an interface for this
-    const noteSequence = [
-      "E4",
-      "F#4",
-      "D4",
-      "A3"
-    ];
-
     const synthSineConfigOne = {
       oscillator: {
         type: "sine"
@@ -48,19 +40,19 @@ class ToneSequence {
     this.synth.connect(panner);
     this.synth.connect(this.meter);
     this.synth.volume.value = volume;
-
-    this.sequence = new Sequence((time, note) => {
-      this.synth.triggerAttackRelease(note, this.noteInterval, time);
-    }, noteSequence, this.noteInterval);
   }
 
   getLevel() {
     return this.meter.getLevel();
   }
 
-  start(when=0) {
-    this.log("starting")
-    this.log(this.sequence)
+  start(when=0, notes) {
+    this.log("starting");
+    this.log(notes);
+
+    this.sequence = new Sequence((time, note) => {
+      this.synth.triggerAttackRelease(note, this.noteInterval, time);
+    }, notes, this.noteInterval);
     Transport.start();
     this.sequence.start(when);
   }

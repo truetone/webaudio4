@@ -34,8 +34,7 @@ class App {
     });
     this.startButtonElem.addEventListener("click", (event) => {
       this.log("start");
-      this.log(this.checkedNotes);
-      this.toneSequence.start();
+      this.toneSequence.start(0, this.checkedNotes);
     });
     this.stopButtonElem.addEventListener("click", (event) => {
       this.log("stop");
